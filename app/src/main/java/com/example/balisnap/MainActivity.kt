@@ -14,15 +14,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.topAppBar.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.menu1 -> {
-                    val intent = Intent(this@MainActivity, LikeActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                else -> false
-            }
+        with(binding) {
+            searchView.setupWithSearchBar(searchBar)
         }
+
     }
 }
