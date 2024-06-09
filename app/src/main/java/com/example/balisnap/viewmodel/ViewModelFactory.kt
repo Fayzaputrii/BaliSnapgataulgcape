@@ -10,8 +10,8 @@ class ViewModelFactory private constructor(private val repositoryUser: Destinati
     ViewModelProvider.NewInstanceFactory(){
     @Suppress("UNCHECKED_CAST")
     override fun  <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
-            return DetailViewModel(repositoryUser) as T
+        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
+            return MainViewModel(repositoryUser) as T
         }
 
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
