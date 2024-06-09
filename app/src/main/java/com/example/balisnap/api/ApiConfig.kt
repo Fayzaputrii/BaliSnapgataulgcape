@@ -1,5 +1,6 @@
 package com.example.balisnap.api
 
+import com.example.balisnap.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,12 +21,17 @@ class ApiConfig {
             val client = OkHttpClient.Builder()
                 .addInterceptor(authInterceptor)
                 .build()
-            val retrofit = Retrofit.Builder()
-                .baseUrl("https://balisnap-qczsjfqsuq-et.a.run.app/destinations/nearby")
+            val baseUrl = if (BuildConfig.BASEURL.endsWith("/")) {
+                BuildConfig.BASEURL
+            } else {
+                BuildConfig.BASEURL + "/"
+            }
+            val getRetrofit= Retrofit.Builder()
+                .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
-            return retrofit.create(ApiService::class.java)
+            return getRetrofit.create(ApiService::class.java)
         }
     }
 }
