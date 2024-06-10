@@ -9,12 +9,14 @@ import com.example.balisnap.adapter.MainAdapter
 import com.example.balisnap.databinding.ActivityMainBinding
 import com.example.balisnap.viewmodel.MainViewModel
 import com.example.balisnap.utils.Result
+import com.example.balisnap.viewmodel.ViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val mainViewModel by viewModels<MainViewModel>()
-
+    private val viewModel by viewModels<MainViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         val mainAdapter = MainAdapter()
 
-        mainViewModel.wisata.observe(this) {wisata ->
+        viewModel.wisata.observe(this) {wisata ->
             mainAdapter.submitList(wisata)
         }
 
@@ -36,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             searchView.setupWithSearchBar(searchBar)
         }
 
-        mainViewModel.getDestination(-8.41465489943872, 115.31360994089808, 5).observe(this) {
+        viewModel.getDestination(-8.41465489943872, 115.31360994089808, 5).observe(this) {
             when (it) {
                 is Result.Loading -> {
 
