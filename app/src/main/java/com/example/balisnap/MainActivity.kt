@@ -20,31 +20,24 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val mainAdapter = MainAdapter()
 
-        viewModel.wisata.observe(this) {wisata ->
-//            mainAdapter.submitList(wisata)
-        }
-
-        binding.recyclerview.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = mainAdapter
-        }
-
-        with(binding) {
-            searchView.setupWithSearchBar(searchBar)
-        }
-
-        viewModel.getDestination(-8.41465489943872, 115.31360994089808, 5).observe(this) {
+        viewModel.getDestination(-8.724451, 115.176827, 1000).observe(this) {
             when (it) {
                 is Result.Loading -> {
 
                 }
 
                 is Result.Success -> {
+
+                    val adapter = MainAdapter()
+                    adapter.submitList(it.data.data!!.destinations)
+                    binding.recyclerview.layoutManager = LinearLayoutManager(this)
+                    binding.recyclerview.adapter = adapter
+
                     Log.e("bisa", "${it.data.data!!.destinations}")
                 }
 
@@ -52,8 +45,19 @@ class MainActivity : AppCompatActivity() {
                     Log.e("gabisa", "${it.error}")
                 }
 
-                else -> {}
             }
         }
+
+
+//        binding.recyclerview.apply {
+//            setHasFixedSize(true)
+//            this.adapter = destinationAdapter
+//        }
+
+        with(binding) {
+            searchView.setupWithSearchBar(searchBar)
+        }
+
+
     }
 }
