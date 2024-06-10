@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface ApiService {
     @GET("nearby")
-    fun getDestination(
+    suspend fun getDestination(
         @Query("latitude") latitude:Double,
         @Query("longitude") longitude:Double,
         @Query("radius") radius:Int

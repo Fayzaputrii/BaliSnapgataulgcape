@@ -45,11 +45,11 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 is Result.Success -> {
-                    Log.e("bisa", "${it.data}")
+                    Log.e("bisa", "${it.data.data!!.destinations}")
                 }
 
                 is Result.Error -> {
-
+                    Log.e("gabisa", "${it.error}")
                 }
 
                 else -> {}
