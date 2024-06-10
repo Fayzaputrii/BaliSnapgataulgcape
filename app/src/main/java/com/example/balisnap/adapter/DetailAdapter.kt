@@ -2,12 +2,16 @@ package com.example.balisnap.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.balisnap.DetailActivity
+import com.example.balisnap.R
 import com.example.balisnap.databinding.ItemWisataBinding
 import com.example.balisnap.response.DestinationsItem
 
@@ -40,7 +44,11 @@ class DetailAdapter : ListAdapter<DestinationsItem, DetailAdapter.MyViewHolder>(
         }
     }
 
-
+    class ViewHolder(view: View): RecyclerView.ViewHolder(view){
+        val namaWisata : TextView = view.findViewById(R.id.tv_item_name)
+        val foto : ImageView = view.findViewById(R.id.img_item_photo)
+        val desc :TextView = view.findViewById(R.id.tv_item_desc)
+    }
 
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DestinationsItem>() {
