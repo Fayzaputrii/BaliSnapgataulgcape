@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         val mainAdapter = MainAdapter()
 
         viewModel.wisata.observe(this) {wisata ->
-            mainAdapter.submitList(wisata)
+//            mainAdapter.submitList(wisata)
         }
 
         binding.recyclerview.apply {
