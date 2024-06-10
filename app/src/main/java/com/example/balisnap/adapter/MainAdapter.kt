@@ -15,7 +15,7 @@ import com.example.balisnap.R
 import com.example.balisnap.databinding.ItemWisataBinding
 import com.example.balisnap.response.DestinationsItem
 
-class DetailAdapter : ListAdapter<DestinationsItem, DetailAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class MainAdapter : ListAdapter<DestinationsItem, MainAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = ItemWisataBinding.inflate(LayoutInflater.from(parent.context), parent, false)

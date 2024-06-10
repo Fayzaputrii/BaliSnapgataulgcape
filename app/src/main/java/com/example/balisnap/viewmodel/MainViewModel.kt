@@ -13,12 +13,18 @@ import com.example.balisnap.R
 import com.example.balisnap.api.ApiConfig
 import com.example.balisnap.repository.DestinationRepository
 import com.example.balisnap.response.Data
+import com.example.balisnap.response.DestinationsItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainViewModel (private val destinationrepo: DestinationRepository) : ViewModel()  {
+    private val namawisata = MutableLiveData<List<DestinationsItem>> ()
+    val wisata: LiveData<List<DestinationsItem>> = namawisata
 
+    companion object{
+        private const val TAG = "MainViewModel"
+    }
     fun getDestination(lat : Double, lon : Double, radius : Int)=destinationrepo.getDestination(lat, lon, radius)
 
 }
