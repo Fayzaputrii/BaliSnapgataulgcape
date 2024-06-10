@@ -1,6 +1,7 @@
 package com.example.balisnap.adapter
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,48 +16,67 @@ import com.example.balisnap.R
 import com.example.balisnap.databinding.ItemWisataBinding
 import com.example.balisnap.response.DestinationsItem
 
-class MainAdapter : ListAdapter<DestinationsItem, MainAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class MainAdapter(private var listwisata: List<DestinationsItem?>, private val listener: OnItemClickListener) : RecyclerView.Adapter<MainAdapter.ListViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val binding = ItemWisataBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MyViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_wisata, parent, false)
+        return ListViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val users = getItem(position)
-        holder.bind(users)
-
-
+    override fun getItemCount(): Int {
+        return listwisata.size
     }
 
-    class MyViewHolder(val binding: ItemWisataBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(wisata: DestinationsItem) {
-
-            binding.itemWisata.setOnClickListener{
-                val intent = Intent(binding.itemWisata.context, DetailActivity::class.java)
-                binding.itemWisata.context.startActivity(intent)
+    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+        val story = listwisata[position]
+        if (story != null) {
+            holder.bind(story)
+            holder.itemView.setOnClickListener {
+                listener.onItemClick(story)
             }
-            binding.tvItemName.text = wisata.name
-            Glide.with(binding.root.context)
-                .load(wisata.image)
-                .circleCrop()
-                .into(binding.imgItemPhoto)
         }
     }
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view){
-        val namaWisata : TextView = view.findViewById(R.id.tv_item_name)
-        val foto : ImageView = view.findViewById(R.id.img_item_photo)
-        val desc :TextView = view.findViewById(R.id.tv_item_desc)
+    inner class ListViewHolder(private val binding: View) : RecyclerView.ViewHolder(binding.rootView) {
+        private val nama: TextView = binding.findViewById(R.id.tv_item_name)
+        private val foto: ImageView = binding.findViewById(R.id.tv_detail_photo)
+        private val deskripsi: TextView = binding.findViewById(R.id.tv_item_desc)
+
+        fun bind(story: DestinationsItem) {
+            nama.text = story.name
+            deskripsi.text = story.description
+            Log.d("StoryAdapter", "Binding story: $story.name")
+            Glide.with(binding.context)
+                .load(story.image)
+                .into(foto)
+        }
+    }
+
+//    fun updateStories(newStories: List<DestinationsItem?>) {
+//        listStory = newStories
+//        Log.d("StoryAdapter", "Updated stories: $newStories")
+//        notifyDataSetChanged()
+//    }
+
+    interface OnItemClickListener{
+        fun onItemClick(wisata: DestinationsItem)
     }
 
     companion object {
+
+        const val IMAGE_STORY = "IMAGE_STORY"
+        const val TITLE_STORY = "TITLE_STORY"
+        const val DESC_STORY = "DESC_STORY"
+
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DestinationsItem>() {
             override fun areItemsTheSame(oldItem: DestinationsItem, newItem: DestinationsItem): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(oldItem: DestinationsItem, newItem: DestinationsItem): Boolean {
+            override fun areContentsTheSame(
+                oldItem: DestinationsItem,
+                newItem: DestinationsItem
+            ): Boolean {
                 return oldItem == newItem
             }
         }
