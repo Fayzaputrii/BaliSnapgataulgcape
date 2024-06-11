@@ -19,38 +19,39 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel (private val destinationrepo: DestinationRepository) : ViewModel()  {
-    private val namawisata = MutableLiveData<List<DestinationsItem>> ()
-    val wisata: LiveData<List<DestinationsItem>> = namawisata
+class MainViewModel(private val destinationrepo: DestinationRepository) : ViewModel() {
+    private val _namaWisata = MutableLiveData<List<DestinationsItem>>()
+    val wisata: LiveData<List<DestinationsItem>> get() = _namaWisata
 
-    companion object{
+    companion object {
         private const val TAG = "MainViewModel"
     }
-    fun getDestination(lat : Double, lon : Double, radius : Int)=destinationrepo.getDestination(lat, lon, radius)
 
-//    fun getSearchDestination(image:String, name:String, description:String){
-//        val client = ApiConfig.getApiService().getSearchDestination(wisata)
-//        client.enqueue(object : retrofit2.Callback<DestinationResponse> {
-//            override fun onResponse(
-//                call: Call<DestinationResponse>,
-//                response: Response<DestinationResponse>
-//            ) {
-//                if (response.isSuccessful) {
-//                    val responseBody = response.body()?.destinations
-//                    if (responseBody != null){
-//                        namawisata.postValue(responseBody)
-//                    } else{
-//                        Log.e(TAG, "Response body is null")
-//                    }
-//                }else{
-//                    Log.e(TAG, "onFailure: ${response.message()}")
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<DestinationResponse>, t: Throwable) {
-//                Log.e(TAG, "onFailure: ${t.message.toString()}")
-//            }
-//
-//        })
-//    }
+    fun getDestination(lat: Double, lon: Double, radius: Int) =
+        destinationrepo.getDestination(lat, lon, radius)
+
+
+    fun getSearchDestination(image: String, name: String, description: String) {
+        val client = ApiConfig.getApiService().getSearchDestination(image, name, description)
+        client.enqueue(object : Callback<DestinationResponse> {
+            override fun onResponse(
+                call: Call<DestinationResponse>, response: Response<DestinationResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()?.data?.destinations
+                    if (responseBody != null) {
+                        _namaWisata.postValue(responseBody.filterNotNull())
+                    } else {
+                        Log.e(TAG, "Response body is null")
+                    }
+                } else {
+                    Log.e(TAG, "Request failed: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<DestinationResponse>, t: Throwable) {
+                Log.e(TAG, "Request failed: ${t.message}")
+            }
+        })
+    }
 }
