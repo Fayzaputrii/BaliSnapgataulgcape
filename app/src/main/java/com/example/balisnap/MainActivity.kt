@@ -55,7 +55,11 @@ class MainActivity : AppCompatActivity() {
 //        }
 
         with(binding) {
+
+
             searchView.setupWithSearchBar(searchBar)
+
+
         }
 
 

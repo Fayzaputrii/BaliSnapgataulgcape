@@ -20,4 +20,11 @@ interface ApiService {
         @Query("name") name:String,
         @Query("description") description:String
     ) : Call<DestinationResponse>
+
+    @GET("destinations/search")
+    fun getSearchDestination(
+        @Query("image") image:String,
+        @Query("name") name:String,
+        @Query("description") description:String
+    ) : Call<DestinationResponse>
 }

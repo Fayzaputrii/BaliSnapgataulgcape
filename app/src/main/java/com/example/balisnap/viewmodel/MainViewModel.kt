@@ -13,6 +13,7 @@ import com.example.balisnap.R
 import com.example.balisnap.api.ApiConfig
 import com.example.balisnap.repository.DestinationRepository
 import com.example.balisnap.response.Data
+import com.example.balisnap.response.DestinationResponse
 import com.example.balisnap.response.DestinationsItem
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,4 +28,29 @@ class MainViewModel (private val destinationrepo: DestinationRepository) : ViewM
     }
     fun getDestination(lat : Double, lon : Double, radius : Int)=destinationrepo.getDestination(lat, lon, radius)
 
+//    fun getSearchDestination(image:String, name:String, description:String){
+//        val client = ApiConfig.getApiService().getSearchDestination(wisata)
+//        client.enqueue(object : retrofit2.Callback<DestinationResponse> {
+//            override fun onResponse(
+//                call: Call<DestinationResponse>,
+//                response: Response<DestinationResponse>
+//            ) {
+//                if (response.isSuccessful) {
+//                    val responseBody = response.body()?.destinations
+//                    if (responseBody != null){
+//                        namawisata.postValue(responseBody)
+//                    } else{
+//                        Log.e(TAG, "Response body is null")
+//                    }
+//                }else{
+//                    Log.e(TAG, "onFailure: ${response.message()}")
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<DestinationResponse>, t: Throwable) {
+//                Log.e(TAG, "onFailure: ${t.message.toString()}")
+//            }
+//
+//        })
+//    }
 }
