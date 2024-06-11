@@ -20,38 +20,11 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainViewModel(private val destinationrepo: DestinationRepository) : ViewModel() {
-    private val _namaWisata = MutableLiveData<List<DestinationsItem>>()
-    val wisata: LiveData<List<DestinationsItem>> get() = _namaWisata
-
-    companion object {
-        private const val TAG = "MainViewModel"
-    }
 
     fun getDestination(lat: Double, lon: Double, radius: Int) =
         destinationrepo.getDestination(lat, lon, radius)
 
 
-    fun getSearchDestination(name: String) {
-        val client = ApiConfig.getApiService().getSearchDestination(name)
-        client.enqueue(object : Callback<DestinationResponse> {
-            override fun onResponse(
-                call: Call<DestinationResponse>, response: Response<DestinationResponse>
-            ) {
-                if (response.isSuccessful) {
-                    val responseBody = response.body()?.data?.destinations
-                    if (responseBody != null) {
-                        _namaWisata.postValue(responseBody.filterNotNull())
-                    } else {
-                        Log.e(TAG, "Response body is null")
-                    }
-                } else {
-                    Log.e(TAG, "Request failed: ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<DestinationResponse>, t: Throwable) {
-                Log.e(TAG, "Request failed: ${t.message}")
-            }
-        })
-    }
+    fun getSearchDestination(name: String) =
+        destinationrepo.getSearchDestination(name)
 }

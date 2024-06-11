@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.balisnap.adapter.MainAdapter
 import com.example.balisnap.databinding.ActivityMainBinding
@@ -38,11 +39,11 @@ class MainActivity : AppCompatActivity() {
                     binding.recyclerview.layoutManager = LinearLayoutManager(this)
                     binding.recyclerview.adapter = adapter
 
-                    Log.e("bisa", "${it.data.data!!.destinations}")
+//                    Log.e("bisa", "${it.data.data!!.destinations}")
                 }
 
                 is Result.Error -> {
-                    Log.e("gabisa", "${it.error}")
+//                    Log.e("gabisa", "${it.error}")
                 }
 
             }
@@ -63,7 +64,8 @@ class MainActivity : AppCompatActivity() {
                 .setOnEditorActionListener { textView, actionId, event ->
                     searchBar.setText(searchView.text)
                     searchView.hide()
-                    viewModel.getSearchDestination(binding.searchBar.text.toString())
+
+                    getSearch(searchBar.text.toString())
 
                     false
                 }
@@ -71,6 +73,30 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    }
 
+    private fun getSearch(name: String) {
+        viewModel.getSearchDestination(name).observe(this) {
+            when (it) {
+                is Result.Loading -> {
+
+                }
+
+                is Result.Success -> {
+                    val adapter = MainAdapter()
+                    adapter.submitList(it.data.data!!.destinations)
+                    binding.recyclerview.layoutManager = LinearLayoutManager(this)
+                    binding.recyclerview.adapter = adapter
+                    adapter.notifyDataSetChanged()
+
+                    Log.e("bisa", "${it.data.data!!.destinations}")
+                }
+
+                is Result.Error -> {
+                    Log.e("gabisa", "${it.error}")
+                }
+
+            }
+        }
     }
 }

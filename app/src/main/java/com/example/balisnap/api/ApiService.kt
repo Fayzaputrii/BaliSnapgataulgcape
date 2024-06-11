@@ -14,6 +14,11 @@ interface ApiService {
         @Query("radius") radius:Int
     ) : DestinationResponse
 
+    @GET("search")
+    suspend fun getSearchDestination(
+        @Query("name") name:String
+    ) : DestinationResponse
+
     @GET("destinations/nearby")
     fun getDetail(
         @Query("image") image:String,
@@ -21,8 +26,5 @@ interface ApiService {
         @Query("description") description:String
     ) : Call<DestinationResponse>
 
-    @GET("destinations/search")
-    fun getSearchDestination(
-        @Query("name") name:String,
-    ) : Call<DestinationResponse>
+
 }
