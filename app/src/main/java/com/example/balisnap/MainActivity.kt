@@ -58,6 +58,15 @@ class MainActivity : AppCompatActivity() {
 
 
             searchView.setupWithSearchBar(searchBar)
+            searchView
+                .editText
+                .setOnEditorActionListener { textView, actionId, event ->
+                    searchBar.setText(searchView.text)
+                    searchView.hide()
+                    viewModel.getSearchDestination(binding.searchBar.text.toString())
+
+                    false
+                }
 
 
         }

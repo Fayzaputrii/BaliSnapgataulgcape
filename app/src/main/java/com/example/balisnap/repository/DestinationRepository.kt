@@ -19,10 +19,10 @@ class DestinationRepository private constructor(
         }
     }
 
-    fun getSearchDestination(image:String, name:String, description:String) = liveData{
+    fun getSearchDestination(name:String) = liveData{
         emit(Result.Loading)
         try {
-            val response = apiService.getSearchDestination(image, name, description)
+            val response = apiService.getSearchDestination(name)
             emit(Result.Success(response))
         } catch (e: Exception) {
             emit(Result.Error("${e.message}"))

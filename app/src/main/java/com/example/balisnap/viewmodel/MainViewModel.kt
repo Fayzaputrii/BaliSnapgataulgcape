@@ -31,8 +31,8 @@ class MainViewModel(private val destinationrepo: DestinationRepository) : ViewMo
         destinationrepo.getDestination(lat, lon, radius)
 
 
-    fun getSearchDestination(image: String, name: String, description: String) {
-        val client = ApiConfig.getApiService().getSearchDestination(image, name, description)
+    fun getSearchDestination(name: String) {
+        val client = ApiConfig.getApiService().getSearchDestination(name)
         client.enqueue(object : Callback<DestinationResponse> {
             override fun onResponse(
                 call: Call<DestinationResponse>, response: Response<DestinationResponse>

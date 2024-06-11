@@ -23,8 +23,6 @@ interface ApiService {
 
     @GET("destinations/search")
     fun getSearchDestination(
-        @Query("image") image:String,
         @Query("name") name:String,
-        @Query("description") description:String
     ) : Call<DestinationResponse>
 }
