@@ -28,7 +28,7 @@ class MainAdapter : ListAdapter<DestinationsItem, MainAdapter.MyViewHolder>(DIFF
         val story = getItem(position)
         holder.bind(story)
         Glide.with(holder.imgstory.getContext())
-            .load(story.image)
+            .load("https://storage.googleapis.com/balisnap-storage/${story.image}")
             .into(holder.imgstory);
 //        holder.itemView.setOnClickListener {
 //            val intentDetailStory =
