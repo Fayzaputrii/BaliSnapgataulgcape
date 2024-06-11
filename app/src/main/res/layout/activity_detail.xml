@@ -19,7 +19,7 @@
     </ImageView>
 
     <TextView
-        android:id="@+id/nama_wisata"
+        android:id="@+id/deskripsi_wisata"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="50dp"
@@ -33,7 +33,7 @@
     </TextView>
 
     <TextView
-        android:id="@+id/deskripsi_wisata"
+        android:id="@+id/nama_wisata"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:layout_constraintBottom_toTopOf="@+id/nama_wisata"
