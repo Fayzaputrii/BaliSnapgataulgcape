@@ -77,14 +77,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun onItemClick(wisata: DestinationsItem) {
-        val intent = Intent(this, DetailActivity::class.java).apply {
-            putExtra(MainAdapter.IMAGE_STORY, wisata.image)
-            putExtra(MainAdapter.TITLE_STORY, wisata.name)
-            putExtra(MainAdapter.DESC_STORY, wisata.description)
-        }
-        startActivity(intent)
-    }
+//    fun onItemClick(wisata: DestinationsItem) {
+//        val intent = Intent(this, DetailActivity::class.java).apply {
+//            putExtra(MainAdapter.IMAGE_STORY, wisata.image)
+//            putExtra(MainAdapter.TITLE_STORY, wisata.name)
+//            putExtra(MainAdapter.DESC_STORY, wisata.description)
+//        }
+//        startActivity(intent)
+//    }
 
     private fun getSearch(name: String) {
         viewModel.getSearchDestination(name).observe(this) {
