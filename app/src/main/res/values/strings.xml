@@ -6,4 +6,6 @@
     <string name="menu_2">Menu 2</string>
     <string name="nama_wisata">wisata\n</string>
     <string name="scan_photo">SCAN</string>
+    <string name="empty_image_warning">Silakan masukkan berkas gambar terlebih dahulu.</string>
+
 </resources>
