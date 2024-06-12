@@ -1,6 +1,5 @@
-package com.example.balisnap.adapter
+package com.bangkit.balisnap.adapter
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,10 +11,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.balisnap.DetailActivity
-import com.example.balisnap.R
-import com.example.balisnap.databinding.ItemWisataBinding
-import com.example.balisnap.response.DestinationsItem
+import com.bangkit.balisnap.DetailActivity
+import com.bangkit.balisnap.R
+import com.bangkit.balisnap.databinding.ItemWisataBinding
+import com.bangkit.balisnap.response.DestinationsItem
 
 class MainAdapter : ListAdapter<DestinationsItem, MainAdapter.MyViewHolder>(DIFF_CALLBACK) {
 

@@ -1,10 +1,10 @@
-package com.example.balisnap.viewmodel
+package com.bangkit.balisnap.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.balisnap.di.Injection
-import com.example.balisnap.repository.DestinationRepository
+import com.bangkit.balisnap.di.Injection
+import com.bangkit.balisnap.repository.DestinationRepository
 
 class ViewModelFactory private constructor(private val repositoryUser: DestinationRepository):
     ViewModelProvider.NewInstanceFactory(){

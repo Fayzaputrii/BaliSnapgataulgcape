@@ -1,18 +1,15 @@
-package com.example.balisnap
+package com.bangkit.balisnap
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.balisnap.adapter.MainAdapter
-import com.example.balisnap.databinding.ActivityMainBinding
-import com.example.balisnap.response.DestinationsItem
-import com.example.balisnap.viewmodel.MainViewModel
-import com.example.balisnap.utils.Result
-import com.example.balisnap.viewmodel.ViewModelFactory
+import com.bangkit.balisnap.adapter.MainAdapter
+import com.bangkit.balisnap.databinding.ActivityMainBinding
+import com.bangkit.balisnap.viewmodel.MainViewModel
+import com.bangkit.balisnap.utils.Result
+import com.bangkit.balisnap.viewmodel.ViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 

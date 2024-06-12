@@ -1,7 +1,7 @@
-package com.example.balisnap.api
+package com.bangkit.balisnap.api
 
 
-import com.example.balisnap.response.DestinationResponse
+import com.bangkit.balisnap.response.DestinationResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

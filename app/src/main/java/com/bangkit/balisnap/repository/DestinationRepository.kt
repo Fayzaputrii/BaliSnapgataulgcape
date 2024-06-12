@@ -1,9 +1,8 @@
-package com.example.balisnap.repository
+package com.bangkit.balisnap.repository
 
 import androidx.lifecycle.liveData
-import com.example.balisnap.api.ApiService
-import com.example.balisnap.utils.Result
-import retrofit2.http.Query
+import com.bangkit.balisnap.api.ApiService
+import com.bangkit.balisnap.utils.Result
 
 class DestinationRepository private constructor(
     private val apiService: ApiService,

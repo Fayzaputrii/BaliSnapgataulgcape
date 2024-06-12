@@ -1,11 +1,11 @@
-package com.example.balisnap
+package com.bangkit.balisnap
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class ScanActivity : AppCompatActivity() {
+class LikeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scan)
+        setContentView(R.layout.activity_like)
     }
 }

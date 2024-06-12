@@ -1,4 +1,4 @@
-package com.example.balisnap
+package com.bangkit.balisnap
 
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import com.bumptech.glide.Glide
-import com.example.balisnap.adapter.MainAdapter
-import com.example.balisnap.databinding.ActivityDetailBinding
+import com.bangkit.balisnap.adapter.MainAdapter
+import com.bangkit.balisnap.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
 

@@ -1,8 +1,8 @@
-package com.example.balisnap.di
+package com.bangkit.balisnap.di
 
 import android.content.Context
-import com.example.balisnap.api.ApiConfig
-import com.example.balisnap.repository.DestinationRepository
+import com.bangkit.balisnap.api.ApiConfig
+import com.bangkit.balisnap.repository.DestinationRepository
 
 object Injection {
     fun provideRepository(context: Context): DestinationRepository {

@@ -1,4 +1,4 @@
-package com.example.balisnap.response
+package com.bangkit.balisnap.response
 
 import com.google.gson.annotations.SerializedName
 

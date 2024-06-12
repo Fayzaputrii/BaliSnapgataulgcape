@@ -1,14 +1,15 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.example.balisnap"
+    namespace = "com.bangkit.balisnap"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.balisnap"
+        applicationId = "com.bangkit.balisnap"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -69,5 +70,9 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
+    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth")
 
 }

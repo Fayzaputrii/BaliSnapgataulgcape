@@ -1,4 +1,4 @@
-package com.example.balisnap
+package com.bangkit.balisnap
 
 import org.junit.Test
 

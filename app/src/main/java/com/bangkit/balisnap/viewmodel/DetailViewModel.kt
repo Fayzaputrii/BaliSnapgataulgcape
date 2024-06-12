@@ -1,7 +1,7 @@
-package com.example.balisnap.viewmodel
+package com.bangkit.balisnap.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.example.balisnap.repository.DestinationRepository
+import com.bangkit.balisnap.repository.DestinationRepository
 
 class DetailViewModel(private val userRepositoryUser: DestinationRepository) : ViewModel() {
 

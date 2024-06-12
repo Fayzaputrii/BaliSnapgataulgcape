@@ -1,4 +1,4 @@
-package com.example.balisnap.utils
+package com.bangkit.balisnap.utils
 
 sealed class Result<out R> private constructor() {
     data class Success<out T>(val data: T) : Result<T>()

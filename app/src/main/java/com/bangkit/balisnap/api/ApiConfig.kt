@@ -1,7 +1,6 @@
-package com.example.balisnap.api
+package com.bangkit.balisnap.api
 
-import com.example.balisnap.BuildConfig
-import okhttp3.Interceptor
+import com.bangkit.balisnap.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
